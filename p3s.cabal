@@ -15,6 +15,19 @@ cabal-version:       >=1.10
 
 library
   hs-source-dirs:      src
+  default-language:    Haskell2010
+  ghc-options:
+    -Wall
+  default-extensions:
+    TypeFamilies,
+    GADTs,
+    DataKinds,
+    PolyKinds,
+    RecordWildCards,
+    ScopedTypeVariables,
+    MultiParamTypeClasses,
+    FlexibleInstances,
+    TypeApplications
   exposed-modules:
     P3S.Apply,
     P3S.Audio,
@@ -32,17 +45,6 @@ library
     P3S.Transformer.Basic,
     P3S.Transformer.Volume
     P3S.Voice
-  default-language:    Haskell2010
-  default-extensions:
-    TypeFamilies,
-    GADTs,
-    DataKinds,
-    PolyKinds,
-    RecordWildCards,
-    ScopedTypeVariables,
-    MultiParamTypeClasses,
-    FlexibleInstances,
-    TypeApplications
   build-depends:
     base >= 4.7 && < 5,
     bytestring,
