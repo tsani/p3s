@@ -1,13 +1,9 @@
 module P3S.Transformer.Volume where
 
-import P3S.Apply
-import P3S.Generator
 import P3S.Math
-import P3S.Misc
 import P3S.Physics
 import P3S.Position
 
-import Data.Function ( on )
 import Data.Coerce
 
 -- | Scale down the volume.
@@ -73,3 +69,4 @@ adsr ADSR{..} s = Position go where
         in Intensity (si - si * i)
       -- after release, intensity is zero.
       | t >= (a <> d <> s <> r) = mempty
+    go _ = error "ADSR not covering"

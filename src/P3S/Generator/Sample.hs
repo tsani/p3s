@@ -16,7 +16,7 @@ sample
 sample off w f (Generator g) n = go n off where
   go :: Int -> t -> [a]
   go 0 _ = []
-  go n t = g f @@ t : go (n - 1) t' where
+  go k t = g f @@ t : go (k - 1) t' where
     t' = t <> w
 
 sampleFor
@@ -27,4 +27,3 @@ sampleFor
   -> S -- ^ Duration
   -> [a]
 sampleFor off (S w) f g (S d) = sample off (S w) f g (d `div` w)
-

@@ -41,8 +41,8 @@ compile
   -> Position t a -- ^ overall audio
 compile (Voice ls) = mconcat $ go mempty ls where
   go :: t -> [Line (Generator n t a) n t] -> [Position t a]
-  go t [] = []
-  go t (Line g n d : ls) = offset t (g @@ n) : go (t <> d) ls
+  go _ [] = []
+  go t (Line g n d : ls') = offset t (g @@ n) : go (t <> d) ls'
 
 -- play
 --   :: forall n t a. (Monoid a, Monoid n, Ord t)

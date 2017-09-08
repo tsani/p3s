@@ -15,7 +15,7 @@ module P3S.Physics
 , Group(..)
 ) where
 
-import P3S.Math ( Group(..), Field(..), Ring(..), Between(..) )
+import P3S.Math ( Group(..), Ring(..), Between(..) )
 
 import Data.Function ( on )
 import Data.Monoid ( (<>) )

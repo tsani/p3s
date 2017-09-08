@@ -8,5 +8,4 @@ module P3S.Transformer
 ) where
 
 
-import P3S.Transformer.Basic
 import P3S.Transformer.Volume

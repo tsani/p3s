@@ -11,8 +11,9 @@ type PhysicalGenerator = Generator Hz S Amplitude
 square :: PhysicalGenerator
 square = pulse 0.5
 
--- | Constructs a pulse wave with the given duty cycle between @0@ and @1@,
--- representing the proportion of time spent in the high state.
+-- | Constructs a pulse wave with the given duty cycle (strictly) between @0@
+-- and @1@, representing the proportion of time spent in the high state per
+-- cycle.
 --
 -- Calls @error@ on out-of-bounds duty cycle values.
 pulse :: Double -> PhysicalGenerator
@@ -23,6 +24,7 @@ pulse d
     g x
       | 0 <= x && x < d = -1
       | d <= x && x < 1 = 1
+      | otherwise = error "pprop is bullshit"
 
 sinGen :: PhysicalGenerator
 sinGen = Generator $ \f -> Position $ \t -> A . g $ pprop f t where

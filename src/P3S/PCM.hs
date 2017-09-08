@@ -3,17 +3,13 @@ module P3S.PCM where
 import P3S.Physics
 
 import Data.Binary.Builder
-import Data.ByteString ( ByteString )
-import qualified Data.ByteString as BS
+import Data.ByteString.Lazy ( ByteString )
 import qualified Data.ByteString.Lazy as LBS
-import Data.Int
-import Data.Monoid ( (<>) )
-import Data.Word
 
 -- | Pulse code modulated audio data.
 data PCM
   = PCM
-    { pcmData :: LBS.ByteString
+    { pcmData :: ByteString
     , pcmSampleInfo :: SampleInfo
     }
 

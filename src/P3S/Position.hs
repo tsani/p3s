@@ -26,6 +26,7 @@ cutoffWith x c p = Position go where
   go t
     | c < t = x
     | c >= t = p @@ t
+    | otherwise = error "bullshit Ord instance"
 
 -- | Introduce an offset to the front of a time curve.
 -- The group (monoid) instance is used to produce the value to use before the
@@ -46,6 +47,7 @@ offsetWith x c p = Position go where
   go t
     | t < c = x
     | t >= c = p @@ (t `diff` c)
+    | otherwise = error "bullshit Ord instance"
 
 ----- INSTANCES ---------------------------------------------------------------
 

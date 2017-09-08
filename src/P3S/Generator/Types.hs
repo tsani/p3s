@@ -1,7 +1,5 @@
 module P3S.Generator.Types
 ( Generator(..)
-, constant
-, liftPosition
 ) where
 
 import P3S.Apply
@@ -16,17 +14,6 @@ import P3S.Profunctor
 --
 -- Generators can be combined pointwise using their applicative instance.
 newtype Generator n t a = Generator (n -> Position t a)
-
--- | A constant generator ignores its input pitch and always produces the same
--- curve.
-constant :: Position t a -> Generator n t a
-constant = Generator . const
-
--- | Lift a transformation of positions into a transformation of generators.
-liftPosition
-  :: (Position t a -> Position s b)
-  -> Generator n t a -> Generator n s b
-liftPosition f (Generator g) = Generator (f . g)
 
 ----- INSTANCES ---------------------------------------------------------------
 
