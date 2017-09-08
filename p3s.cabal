@@ -1,0 +1,63 @@
+name:                p3s
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/githubuser/tirna#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Author name here
+maintainer:          example@example.com
+copyright:           2017 Author name here
+category:            Web
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:
+    P3S.Apply,
+    P3S.Audio,
+    P3S.Generator,
+    P3S.Generator.Physical,
+    P3S.Generator.Sample,
+    P3S.Generator.Types,
+    P3S.Math,
+    P3S.Misc,
+    P3S.PCM,
+    P3S.Physics,
+    P3S.Position,
+    P3S.Profunctor,
+    P3S.Transformer,
+    P3S.Transformer.Basic,
+    P3S.Transformer.Volume
+    P3S.Voice
+  default-language:    Haskell2010
+  default-extensions:
+    TypeFamilies,
+    GADTs,
+    DataKinds,
+    PolyKinds,
+    RecordWildCards,
+    ScopedTypeVariables,
+    MultiParamTypeClasses,
+    FlexibleInstances,
+    TypeApplications
+  build-depends:
+    base >= 4.7 && < 5,
+    bytestring,
+    binary
+
+executable tirna-exe
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+    base,
+    bytestring,
+    p3s
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/githubuser/tirna
