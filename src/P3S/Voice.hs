@@ -22,11 +22,15 @@ silence d =
 -- Multiple voices can be overlayed to create harmony.
 newtype Voice i n d = Voice { unVoice :: [Line i n d] }
 
+-- | Voices are combined sequentially.
 instance Monoid (Voice i n d) where
   mempty = Voice []
   mappend (Voice v1) (Voice v2) = Voice (v1 <> v2)
 
 -- | Measures the nominal duration of a voice.
+--
+-- Note that generators can produce sound even after their advertised durations
+-- have elapsed. This is the difference between /nominal/ and /real/ duration.
 duration :: Monoid d => Voice i n d -> d
 duration = mconcat . map lineDuration . unVoice
 
