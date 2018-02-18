@@ -67,3 +67,12 @@ class Between a where
     -> a -- ^ hi
     -> a -- ^ point to measure
     -> Progress a
+
+-- | A class much like Enum, but where the tags are /modular/, i.e. they wrap
+-- around.
+class ModularEnum a where
+  modSucc :: a -> a
+  modPred :: a -> a
+
+  modEnumFrom :: a -> [a]
+  modEnumFrom = iterate modSucc

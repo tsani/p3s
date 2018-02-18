@@ -1,8 +1,31 @@
 module P3S.Note where
 
--- | A note is a frequency expressed relative to a fixed base frequency by a
--- number of semitones.
-newtype Note = Note { note :: Interval }
+-- | Names of the difference keys on a keyboard.
+data KeyName
+  = KA
+  | KBbA'
+  | KB
+  | KC
+  | KDbC'
+  | KD
+  | KEbD'
+  | KE
+  | KF
+  | KGbF'
+  | KG
+  | KAbG'
+  deriving (Bounded, Enum, Eq, Read, Show)
+
+data Diatonic =
+  Diatonic
+    { noteName :: NoteName
+    , alteration :: Int
+    }
+
+
+-- | A note pitch is a frequency expressed relative to a fixed base frequency
+-- by a number of semitones.
+newtype NotePitch = NotePitch { note :: Interval }
 
 -- | Computes the interval distance between two notes.
 diffNote :: Note -> Note -> Interval
